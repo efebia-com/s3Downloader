@@ -1,0 +1,16 @@
+{
+  "name": "s3downloader",
+  "version": "1.0.0",
+  "description": "utility for downloading files from AWS S3 buckets",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.799.0",
+    "dotenv": "^8.2.0"
+  }
+}
