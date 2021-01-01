@@ -1,3 +1,7 @@
+const { access, constants } = require(`fs`);
+const {  } = require(`fs/promises`);
+const { resolve } = require("path");
+
 const isDefined = variable => variable != null && variable != undefined;
 
 const areDefined = (obj, listKeys) => new Promise((resolve, reject) => {
@@ -8,6 +12,28 @@ const areDefined = (obj, listKeys) => new Promise((resolve, reject) => {
     return resolve(true);
 });
 
+const sleep = ms => new Promise( resolve => setTimeout(resolve, ms));
+
+const fileExists = fileName => new Promise((resolve, reject) => {
+    try {
+        const onAccessed = error => {
+            if(isDefined(error)) {
+                return resolve(false);
+            } else {
+                return resolve(true);
+            }
+        };
+
+        access(fileName, constants.F_OK, onAccessed);
+    } catch(error) {
+        reject(error);
+    }
+    
+});
+
+
 module.exports = {
-    areDefined
+    areDefined,
+    sleep,
+    fileExists
 }
